@@ -24,7 +24,6 @@ pip3 install pandas
 
 * scikit-learn - Machine learning library
 * pandas - Data analysis library
-* conda environment - required for RDKit
 
 
 
