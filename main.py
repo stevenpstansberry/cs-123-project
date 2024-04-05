@@ -2,8 +2,12 @@ import pandas as pd
 
 
 # Load the dataset
-df = pd.read_csv('chemical_compounds.csv')
+data = pd.read_csv('chemical_compounds.csv')
 
-# Display the first few rows of the dataframe
-print(df.head())
+#print (data.columns)
 
+# Assuming the last column 'class' is the target variable
+X = data.drop('Class', axis=1)  # Features
+y = data['Class']  # Target variable
+
+print(y)
