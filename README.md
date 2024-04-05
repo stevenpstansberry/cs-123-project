@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project utulizes machine learning to identify potential small molecules capable of inhibiting BRAF protein mutations, a mutation that is significant precursor to various cancer forms, particularly melanoma. 
+This project is aimed at creating a classifcation predication model to identify small chemcial compounds that are potential inhibtiors of cancers caused by the BRAFV600E mutation, a mutation strongly assoicated with the onset of various forms of cancer, particulary melanoma. 
 
 ## Technical Details 
 
