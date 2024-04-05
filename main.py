@@ -4,7 +4,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, classification_report
 
-
 # Load the dataset
 data = pd.read_csv('chemical_compounds.csv')
 
@@ -16,7 +15,6 @@ print(f"Non-numeric columns: {non_numeric_columns}")
 
 # Drop the non-numeric 'PUBCHEM_COORDINATE_TYPE' column
 data = data.drop('PUBCHEM_COORDINATE_TYPE', axis=1)
-
 
 # Check for NaN values in the dataset
 nan_values = data.isna()
@@ -37,7 +35,6 @@ print(f"Non-numeric columns: {non_numeric_columns}")
 
 print("\n \n \n \n \n ")
 
-
 X = data.drop('Class', axis=1)  # Features of target variable
 y = data['Class']  # Target variable
 
@@ -49,22 +46,21 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# Initalize SVM classifer with linear kernal
+# Initalize SVM classifer with a linear kernal
 svm_classifier = SVC(kernel='linear')
 
-# Train the classifier on the data
+# Train the classifier
 svm_classifier.fit(X_train_scaled, y_train)
 
 # Make predictions on the test set
 y_pred = svm_classifier.predict(X_test_scaled)
 
-# Evaluate the classifier
+# Print out results of predictions agaisnt the test set
 accuracy = accuracy_score(y_test, y_pred)
 class_report = classification_report(y_test, y_pred)
 
 
 print("Accuracy: ", accuracy ,"\n")
-#print(f"Accuracy: {accuracy_score(y_test, y_pred)}")
 print("Class report: ")
 print("--------------------------------------------------------")
 print(class_report)
