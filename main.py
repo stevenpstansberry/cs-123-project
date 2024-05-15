@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
@@ -11,7 +12,7 @@ data = pd.read_csv('chemical_compounds.csv')
 non_numeric_columns = data.columns[(data.dtypes == 'object').values].tolist()
 
 # Print non-numeric columns
-print(f"Non-numeric columns: {non_numeric_columns}")
+#print(f"Non-numeric columns: {non_numeric_columns}")
 
 # Drop the non-numeric 'PUBCHEM_COORDINATE_TYPE' column
 data = data.drop('PUBCHEM_COORDINATE_TYPE', axis=1)
@@ -20,20 +21,19 @@ data = data.drop('PUBCHEM_COORDINATE_TYPE', axis=1)
 nan_values = data.isna()
 
 # Print rows with NaN values
-print("Rows with NaN values:")
-print(data[nan_values.any(axis=1)])
+#print("Rows with NaN values:")
+#print(data[nan_values.any(axis=1)])
 
 # Drop any NaN values
-# TODO check to see if there are any better ways to fix NaN values rather than just dropping
 data = data.dropna()
 
 # Find non-numeric columns
 non_numeric_columns = data.columns[(data.dtypes == 'object').values].tolist()
 
 # Print non-numeric columns
-print(f"Non-numeric columns: {non_numeric_columns}")
+#print(f"Non-numeric columns: {non_numeric_columns}")
 
-print("\n \n \n \n \n ")
+#print("\n \n \n \n \n ")
 
 X = data.drop('Class', axis=1)  # Features of target variable
 y = data['Class']  # Target variable
@@ -64,3 +64,26 @@ print("Accuracy: ", accuracy ,"\n")
 print("Class report: ")
 print("--------------------------------------------------------")
 print(class_report)
+
+
+# Load the new dataset
+new_data = pd.read_csv('new_chemical_compounds.csv')
+
+# Drop non-numeric columns and handle missing values 
+new_data = new_data.drop('PUBCHEM_COORDINATE_TYPE', axis=1)
+new_data = new_data.dropna()
+
+# Feature Set
+X_new = new_data
+X_new_scaled = scaler.transform(X_new)  # set scalar
+
+# Set target variable to predict
+y_new_pred = svm_classifier.predict(X_new_scaled)
+
+# Add predictions to the new dataset
+new_data['Predicted_Class'] = y_new_pred
+
+# Save the results as a csv file 
+new_data.to_csv('predicted_braf_inhibitors.csv', index=False)
+
+
