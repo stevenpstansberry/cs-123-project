@@ -11,8 +11,6 @@ data = pd.read_csv('chemical_compounds.csv')
 # Find non-numeric columns
 non_numeric_columns = data.columns[(data.dtypes == 'object').values].tolist()
 
-# Print non-numeric columns
-#print(f"Non-numeric columns: {non_numeric_columns}")
 
 # Drop the non-numeric 'PUBCHEM_COORDINATE_TYPE' column
 data = data.drop('PUBCHEM_COORDINATE_TYPE', axis=1)
@@ -20,9 +18,6 @@ data = data.drop('PUBCHEM_COORDINATE_TYPE', axis=1)
 # Check for NaN values in the dataset
 nan_values = data.isna()
 
-# Print rows with NaN values
-#print("Rows with NaN values:")
-#print(data[nan_values.any(axis=1)])
 
 # Drop any NaN values
 data = data.dropna()
@@ -30,10 +25,7 @@ data = data.dropna()
 # Find non-numeric columns
 non_numeric_columns = data.columns[(data.dtypes == 'object').values].tolist()
 
-# Print non-numeric columns
-#print(f"Non-numeric columns: {non_numeric_columns}")
 
-#print("\n \n \n \n \n ")
 
 X = data.drop('Class', axis=1)  # Features of target variable
 y = data['Class']  # Target variable
