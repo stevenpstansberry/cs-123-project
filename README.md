@@ -15,12 +15,22 @@ For this project, we have used an SVM (Support Vector Machine) classifier, which
 * Pubchem 
 
 ## How to run 
+Ensure that you have have at least Python version 3.9.x
+
 First, ensure you have the neccesary requirements, listed below in the Requirements section. Run the following commands within the terminal in order to obtain the requirements
 
 ``` sh
 pip3 install scikit-learn
 pip3 install pandas
 ```
+
+Now that the requirements have been installed, we can run main.py
+
+```sh
+python3 main.py
+```
+
+Note that this requires that we are in the cs-123-project directory and that chemical_compounds.csv and new_chemical_compounds.csv are local to main.py
 
 ### Requirements 
 
